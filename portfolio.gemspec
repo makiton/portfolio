@@ -1,4 +1,3 @@
-
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "portfolio/version"
@@ -11,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{An implement about portfolio theory}
   spec.description   = %q{An implement about portfolio theory risk-return plane}
-  spec.homepage      = "https://ja.wikipedia.org/wiki/%E7%8F%BE%E4%BB%A3%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA%E7%90%86%E8%AB%96"
+  spec.homepage      = "https://github.com/makiton/portfolio/blob/master/lib/portfolio.rb"
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem when it is released.
@@ -26,5 +25,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "pry", "~> 0.10.0"
-  spec.add_development_dependency "gnuplot", "~> 2.6.2"
 end
