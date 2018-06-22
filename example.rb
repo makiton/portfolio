@@ -1,6 +1,25 @@
 require 'portfolio'
 require 'gnuplot'
 
+
+module Portfolio
+  class CasinoGame < AssetClass
+    TRIALS = 100000
+
+    def initialize(name:, winrate:, equity:)
+      cur = 10000
+      histdata = TRIALS.times.map {
+        if rand <= winrate
+          cur += equity - 1
+        else
+          cur -= 1
+        end
+      }
+      super(name: name, histdata: histdata)
+    end
+  end
+end
+
 def plot
   ef = Portfolio::EfficientFrontier.new([
     Portfolio::CasinoGame.new(name: "ルーレット", winrate: 1/38.0, equity: 36),
