@@ -7,15 +7,18 @@ def plot
     Portfolio::CasinoGame.new(name: "バカラ", winrate: 0.48, equity: 2),
     Portfolio::CasinoGame.new(name: "ポーカー", winrate: 0.05, equity: 25),
     Portfolio::CasinoGame.new(name: "スロット", winrate: 0.001, equity: 999),
-#    Portfolio::CasinoGame.new(name: "預金", winrate: 1.0, equity: 1.001),
+    Portfolio::CasinoGame.new(name: "預金", winrate: 1.0, equity: 1.0),
   ])
   p "mean: #{ef.asset_classes.map(&:mean)}"
   p "equity: #{ef.asset_classes.map(&:equity)}"
   p "variance: #{ef.asset_classes.map(&:variance)}"
-  p "histdata: #{ef.asset_classes.map { |ac| 5.times.map { |i| ac.histdata[10 ** i] } }}"
+  p "histdata: #{ef.asset_classes.map { |ac| 6.times.map { |i| ac.histdata[10 ** i - 1] } }}"
 
   Gnuplot.open do |gp|
     Gnuplot::Plot.new(gp) do |plot|
+      plot.xlabel "variance"
+      plot.ylabel "equity"
+
       variance_range = ef.variance_range
       equity_range = ef.equity_range
 
